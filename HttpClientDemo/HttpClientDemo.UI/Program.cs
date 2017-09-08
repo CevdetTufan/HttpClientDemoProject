@@ -1,5 +1,6 @@
 ﻿using HttpClientDemo.Service.Operations;
 using System;
+using System.Threading.Tasks;
 
 namespace HttpClientDemo.UI
 {
@@ -11,14 +12,23 @@ namespace HttpClientDemo.UI
             service.Host = "host";
 
             string token = "token";
+
             service.Token = string.Format("bearer {0}", token);
 
-            string result = service.Get("method_address");
 
-            Console.WriteLine(service.HttpStatusCode);
-            Console.WriteLine(result);
+            Download(service);
+
 
             Console.ReadLine();
+        }
+        static async void Download(ServiceOperations service)
+        {
+            var s = await Task.Run(() =>
+            {
+                return service.GetAsync("OnlinePrice/GetPriceChange");
+
+            });
+            Console.WriteLine(s);
         }
     }
 }

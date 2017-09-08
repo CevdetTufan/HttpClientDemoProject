@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Operations\IService.cs" />
+    <Compile Include="Operations\IServiceAsync.cs" />
     <Compile Include="Operations\ServiceOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
